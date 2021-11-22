@@ -1,12 +1,11 @@
-var express = require('express')
-var app = express()
+var express = require('express');
+var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-// const passport = require('passport');
 var fs = require('fs');
-// const expressSession = require('express-session');
 var path = require('path');
-// var flash = require('connect-flash');
+const jwt = require('jsonwebtoken');
+
 require('dotenv/config');
 
 mongoose.connect(process.env.MONGO_URL,
@@ -33,28 +32,9 @@ var storage = multer.diskStorage({
 });
 
 
-// app.use(expressSession(
-//     secret('session'),
-//     maxAge(3600000),
-//     resave(true),
-//     saveUninitialized(true),
-// ));
-
-// app.use(flash());
-
-// app.use(function(req, res, next) {
-//     res.locals.success_message = req.flash('success_message');
-//     res.locals.error_message = req.flash('error_message');
-//     res.locals.error = req.flash('error');
-
-// })
-
 var upload = multer({ storage: storage });
 var Admin = require('./model');
 var User = require('./model-1');
-
-
-
 
 
 // TO OPEN HOME PAGE
