@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;0,700;1,200;1,300;1,500;1,600&display=swap');
+
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+
+/* html{
+    font-size: 62.5%;
+} */
+
+body{
+    font-family: 'poppins', sans-serif;
+}
+
+.btn-primary{
+    color: #fff;
+    background: #16a089;
+}
+
+
+/* ################## NAVBAR STYLING ######### */
+
+/* fro destop mode  */
+.navbar input[type = 'checkbox'],
+.navbar .hamburger-lines{
+    display: none;
+}
+
+
+
+.navbar{
+    box-shadow: 0px 5px 10px 0px aqua;
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    opacity: 0.85;
+    z-index: 999;
+}
+
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+}
+
+.menu-items{
+    order: 2;
+    display: flex;
+}
+.menu-items li {
+    list-style: none;
+    margin-left:1.5rem ;
+    margin-right:1rem ;
+    font-size: 120%;
+}
+.logo{
+    order: 1;
+    font-size: 170%;
+    font-style:initial;
+    color: rgb(10, 187, 155);
+    transform: translateX(-150%);
+    animation: logo-animation 0.5s ease-in-out forwards;
+}
+@keyframes logo-animation{
+    100%{
+        transform: translate(0);
+    }
+}
+
+.navbar a{
+    color: #444;
+    text-decoration: none;
+    font-weight: 100;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover{
+    color: rgb(0, 251, 255);
+}
+
+
+/* ------------------- FOR ERROR PAGE ------------------- */
+.cart{
+    background:whitesmoke;
+}
+
+.empty-cart{
+    padding-top:4rem;
+    padding-bottom:4rem
+}
+
+.container-1{
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+}
+
+.header{
+    font-size:1.875rem;
+    line-height: 2.25rem;
+    font-weight:700;
+    margin-bottom: 0.5rem;
+}
+
+.paragraph{
+    margin-bottom: 3rem;
+    font-size:1.125rem;
+    line-height: 1.75rem;
+    color:grey;
+}
+
+.img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.btn{
+    display: inline-block;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    border-radius: 9999px;
+    margin-top:3rem;
+    font-weight: 700;
+    /* color:white;
+    background-color:orangered; */
+}
+
+/* -----------------------order Container -------------------------------- */
+
+.cart-1{
+    padding-top: 6rem;
+    padding-bottom: 6rem
+
+}
+.order-container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.con-1{
+    display: flex;
+    text-align:center;
+    border-bottom-width: 1px ;
+    border-color: rgb(196, 189, 189);
+    background-color: white;
+    padding-bottom: 1rem;
+}
+
+.OS{
+    font-weight: 700;
+    margin-left: 1rem;
+    font-size:1.5rem;
+    line-height: 2rem;
+}
+
+.con-2{
+    display: flex;
+    align-items: center;
+}
+
+.img-1{
+    width:6rem;
+}
+
+.con1{
+    flex:1 1 0%;
+    margin-left:1rem;
+}
+
+.con2{
+    flex:1 1 0%;
+}
+
+.con3{
+    font-weight: 700;
+    font-size:1.125rem;
+    line-height: 1.75rem;
+}
+
+
+.con-3{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: right;
+}
+
+.con4{
+    font-size:1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+}
+
+.amount{
+    font-size:1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    color: #16a089;
+}
+
+.form-control{
+    padding: 0.5rem;
+    width:50%;
+    border-color: rgb(179, 172, 172);
+    margin-bottom: 2rem;
+}
+.form-control-1{
+    padding: 0.5rem;
+    width:50%;
+    border-color: rgb(179, 172, 172);
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" >
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="/INDEX.HTML#showcase">Home</a></li>
+                <!-- <li><a href="#about">About</a></li> -->
+                <li><a href="INDEX.HTML#food">Category</a></li>
+                <li><a href="/INDEX.HTML#food-menu">Menu</a></li>
+                <li><a href="/INDEX.HTML#contact">Contact</a></li>
+                <li><a href="#my-logout">Logout</a></li>
+            </ul>
+            <h1 class="logo">The Secret Recipes</h1>
+        </div>
+    </nav>
+    <section class="cart-1">
+        <div class="order-container">
+            <div class="con-1">
+                <img src="/IMG/cart-black.png" alt="" >
+                <h1 class="OS">Order summary</h1>
+            </div>
+        
+            
+            <div class="pizza-list" style="margin-top:1rem">
+                <div class="con-2">
+                    <img class="img-1" src="/IMG/pizza/margheritapng.png">
+                    <div class="con1">
+                        <h1>Margherita</h1>
+                        <span>Small</span>
+                    </div>
+                    <span class="con2">1 Pcs</span>
+                    <span class="con3">₹250</span>
+                </div>
+            </div>
+            <hr>
+            <div class="con-3">
+                <div>
+                    <span class="con4">Total Amount:</span>
+                    <span class="amount">₹250</span>
+                <div>
+                    <div>
+                        <form>
+                            <input type="tel" class="form-control" name="phone" placeholder="phone number">
+                            <input type="text" class="form-control-1" name="address" placeholder="address">
+                            <div>
+                                <button class="btn btn-primary">
+                                    Order Now
+                                <button>
+                            <div>
+                        </form>
+                    </div>
+            <div>
+        </div>
+
+
+        <!-- <div class="emty-cart">
+            <div class="container">
+                <h1 class="header">Cart Empty</h1>
+                <p class="paragraph">You probably haven't ordered yet. <br>
+                To order a pizza, go to main page.</p>
+                <img class="img" src="/IMG/empty-cart.png" alt="empty-cart"><br>
+                <a class="btn" href="">Go back</a>
+            </div>
+        <div> -->
+    </section>
+</body>
+</html>

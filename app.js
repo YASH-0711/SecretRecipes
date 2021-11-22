@@ -2,8 +2,11 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+// const passport = require('passport');
 var fs = require('fs');
+// const expressSession = require('express-session');
 var path = require('path');
+// var flash = require('connect-flash');
 require('dotenv/config');
 
 mongoose.connect(process.env.MONGO_URL,
@@ -30,15 +33,37 @@ var storage = multer.diskStorage({
 });
 
 
+// app.use(expressSession(
+//     secret('session'),
+//     maxAge(3600000),
+//     resave(true),
+//     saveUninitialized(true),
+// ));
+
+// app.use(flash());
+
+// app.use(function(req, res, next) {
+//     res.locals.success_message = req.flash('success_message');
+//     res.locals.error_message = req.flash('error_message');
+//     res.locals.error = req.flash('error');
+
+// })
 
 var upload = multer({ storage: storage });
 var Admin = require('./model');
+var User = require('./model-1');
+
+
+
+
+
+// TO OPEN HOME PAGE
 
 app.get("/", (req,res) => {
     res.render("Home")
 });
 
-
+// TO OPEN PIZZA MENU PAGE
 app.get('/Menu', (req, res) => {
     Admin.find( (err, items) => {
         if (err) {
@@ -69,11 +94,16 @@ app.post('/addMenu', upload.single('image'), (req, res, next) => {
         }
     }
     Admin.create(obj, (err, item) => {
+        console.log(obj)
+        // console.log(item)
+
+
         if (err) {
             console.log(err);
         }
         else {
-            // item.save();
+            item.save();
+            
             res.redirect('/Menu');
         }
     });
@@ -157,6 +187,51 @@ app.get('/register', (req, res) => {
     res.render("register")
 });
 
+app.post('/register', (req, res, next) => {
+    if (  !req.body.fullname || !req.body.email ||  !req.body.phone || !req.body.password || !req.body.passwordConf){
+        req.flash('error_message' , "Please enter full details.")
+       
+    } else {
+        if (req.body.password == req.body.passwordConf){
+
+            User.findOne({ email: req.body.email }, (err, data) =>{
+
+                if(!data){
+                    let c;
+                    User.findOne({}, (err, data) =>{
+                        var obj = {
+                            // unique_id: c,
+                            fullname: req.body.fullname,
+                            email: req.body.email,
+                            phone: req.body.phone,
+                            password: req.body.password,
+                            passwordConf: req.body.passwordCon,     
+                        };
+                        User.create(obj, (err, item) => {
+                            if (err) {
+                                console.log(err);
+                            }
+                            else {
+                                // item.save();
+                                 res.redirect('/');
+                            }
+                        });
+                    })
+                    
+                    
+                } else{
+                    res.send({ "success": "Email is already registered" });
+                }
+                
+            });
+           
+        } else {
+            res.send({ "Success": "password is not matched" });
+        }
+    };
+
+});
+
 
 // TO SHOW LOGIN PAGE
 
@@ -165,7 +240,7 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', (req, res, next) => {
-    Admin.findOne({ email: req.body.email }, (err, data) => {
+    User.findOne({ email: req.body.email }, (err, data) => {
         if (data) {
 
             if (data.password == req.body.password) {
@@ -177,6 +252,12 @@ app.post('/login', (req, res, next) => {
             res.send({ "Success": "This Email Is not regestered!" });
         }
     });
+});
+
+// TO OPEN CART PAGE 
+
+app.get('/cart', (req, res) => {
+    res.render("cart")
 });
 
 // to start the server 
