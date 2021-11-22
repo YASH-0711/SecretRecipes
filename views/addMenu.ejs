@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/addMenu.css">
+    <title>Document</title>
+    <style>
+    
+    html,body{
+    background: linear-gradient(115deg, #59e7bd, #1feef5);
+}
+
+.register-title{
+    
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    background: linear-gradient(115deg, #59e7bd, #1feef5);
+    
+}
+
+.register{
+    display: flex;
+    justify-content: center;
+    padding-top: 6rem;
+    
+}
+
+.con{
+    width: 100%;
+    max-width: 20rem;
+
+}
+
+.container{
+    background-color:#fff;
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    border-radius: 0.25rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+}
+
+.con-1{
+    margin-bottom: 1rem;
+}
+
+.la{
+    display: block;
+    color: rgb(77, 75, 75);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.in{
+    --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    appearance:none;
+    border-width: 1px;
+    border-radius: 0.25rem;
+    width: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: rgb(77, 75, 75);
+    line-height: 1.25;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.con-2{
+    margin-bottom: 1.5rem;
+}
+
+.btn{
+        border-radius: 9999px;
+        color: black;
+        font-weight: 700;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        /* border-radius: 0.25rem; */
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        background: linear-gradient(115deg, #59e7bd, #1feef5);
+}
+
+.a{
+        display: inline-block;
+        vertical-align: baseline;
+        font-weight: 700;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+}
+
+
+.con-3{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.con-4{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="register">
+        <div class="con">
+            <form action="/addMenu" method="POST" enctype="multipart/form-data" class="container">
+            <h1 class="register-title">Add Food</h1>
+            
+            <div class="con-1">
+                <label class="la" for="name">Food Title</label>
+                <input class="in" type="text" id="name" placeholder="Title of Food" 
+                       value="" name="name" required>
+            </div>
+            <div con-2>
+                <label class="la" for="price">Price</label>
+                <input class="in" type="number" id="price" name="price" value=""
+                          placeholder="price" required>
+                </input>
+            </div>
+        </br>
+        <input type="radio" id="small" name="size" value="small">
+        <label for="small"> Small</label><br>
+        <input type="radio" id="medium" name="size" value="medium">
+        <label for="medium"> medium</label><br>
+        <input type="radio" id="large" name="size" value="large">
+        <label for="large"> large</label>
+        </br>
+        </br>
+        <div class="con-1">
+            <div><label class="la" for="image">Upload Image</label></div>
+        
+            <input class="in" type="file" id="image" 
+                   name="image" value="" required>
+        </div>
+        </br>
+            <div class="con-3">
+                <button class="btn" type="submit">Add Food</button>
+            </div>
+        </br>
+            <div>  <span> Go To Home:</span><a href="/">click here</a></div></br>
+            <!-- <div>  <span>To Add Templates:</span><a href="http://localhost:3000/addtemplate">click here</a></div></br> -->
+            <div><span>List of All User : </span><a href="/datatable">click here</a>
+			</div>
+        </form>
+    </div>
+    </div>
+</body>
+</html>

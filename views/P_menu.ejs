@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="/views/css/menu.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;0,700;1,200;1,300;1,500;1,600&display=swap');
+
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+/* 
+html{
+    font-size: 62.5%;
+} */
+
+body{
+    font-family: 'poppins', sans-serif;
+}
+
+
+/* ################## NAVBAR STYLING ######### */
+
+/* fro destop mode  */
+.navbar input[type = 'checkbox'],
+.navbar .hamburger-lines{
+    display: none;
+}
+
+
+.navbar{
+    box-shadow: 0px 5px 10px 0px aqua;
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    opacity: 0.85;
+    z-index: 999;
+}
+
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+}
+
+.menu-items{
+    order: 2;
+    display: flex;
+}
+.menu-items li {
+    list-style: none;
+    margin-left:1.5rem ;
+    font-size: 120%;
+}
+.logo{
+    order: 1;
+    font-size: 170%;
+    font-style:initial;
+    color: rgb(10, 187, 155);
+    transform: translateX(-150%);
+    animation: logo-animation 0.5s ease-in-out forwards;
+}
+@keyframes logo-animation{
+    100%{
+        transform: translate(0);
+    }
+}
+
+.navbar a{
+    color: #444;
+    text-decoration: none;
+    font-weight: 100;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover{
+    color: rgb(0, 251, 255);
+}
+
+
+/*++++++++++++++++++++++++ menu++++++++++++++++++++++ */
+
+#food-menu{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.food-menu-heading{
+    
+    color: rgb(10, 187, 155);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4rem;
+    transform: translateX(150%);
+    animation: logo-animation 0.5s ease-in-out forwards;
+    font-size: 4rem;
+}
+
+
+.food-menu-container  {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    column-gap: 3rem;
+    row-gap: 4rem;
+    margin-left: 2rem;
+}
+
+.showcase-area-1{
+    height: 70vh;
+    background:url("IMG/pexels-photo-3761662.jpeg");
+    background-size:  cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.showcase-container-1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    font-size: 1.6rem;
+}
+
+.food-type{
+    font-size:1.150rem;
+    line-height:1.75rem;
+    margin: 1rem;
+}
+
+.size{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    font-size:0.75rem;
+    line-height:1rem;
+    background:rgb(226, 220, 220);
+}
+
+.rate{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+}
+
+.add-to-cart{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-radius: 9999px;
+    display:flex;
+    align-items: center;
+    font-weight: 700;
+    color: #fff;
+    background-color: #16a089;
+}
+
+.img{
+    height:10rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.flash-1{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color:rgb(21, 175, 21)
+}
+
+
+    </style> 
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" >
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="/INDEX.HTML#showcase">Home</a></li>
+               
+                <li><a href="INDEX.HTML#food">Category</a></li>
+                <li><a href="/INDEX.HTML#food-menu">Menu</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/addMenu">Add Menu</a></li>
+                <li><a href=""><img src="/public/IMG/cart-black.png"></a></li>        
+          
+            </ul>
+            <h1 class="logo">The Secret Recipes</h1>
+        </div>
+    </nav>
+
+
+    <section class="showcase-area-1" id="showcase">
+   
+        <div class="showcase-container-1">
+    
+        </div> 
+    </section>
+    <section id="food-menu">
+        <h1 class="food-menu-heading">
+            Pizza
+        </h1>
+        
+        <div class="food-menu-container container">
+            
+            <% items.forEach(function(image) { %>
+            <div class="food-menu-item" style="width:16rem">
+                    <div class="food-description" style="text-align: center;">
+                        <img class="img" src="data:image/<%=image.img.contentType%>;base64,
+                        <%=image.img.data.toString('base64')%>">
+
+                        <h2 class="food-type"><%= image.name %></h2>
+
+                        <span class="size"><%= image.size %></span>
+
+                        <div class="rate">
+                            <span>₹<%= image.price %></span>
+                        <button class="add-to-cart">
+                            <span>+</span>
+                            <span style="margin-left: 1rem;">Add</span>
+                        </button>
+                        </div> 
+                    </div>
+            </div>
+            <% }) %>
+        </div>
+    </section>
+</body>
+</html>

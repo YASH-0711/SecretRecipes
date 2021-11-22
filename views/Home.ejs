@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <title>the secret recipes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;0,700;1,200;1,300;1,500;1,600&display=swap');
+
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: 'poppins', sans-serif;
+}
+
+/* ################ UTILITY CLASSES ################ */
+.container{
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+}
+
+.btn{
+    display: inline-block;
+    padding: 1em 2.5rem;
+    text-decoration: none;
+    border-radius: 100px;
+    cursor: pointer;
+    outline: none;
+    margin-top: 1em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.btn-primary{
+    color: #fff;
+    background: #16a089;
+}
+
+/* ################## NAVBAR STYLING ######### */
+
+/* fro destop mode  */
+.navbar input[type = 'checkbox'],
+.navbar .hamburger-lines{
+    display: none;
+}
+
+
+.navbar{
+    box-shadow: 0px 5px 10px 0px aqua;
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    opacity: 0.85;
+    z-index: 999;
+}
+
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    align-items: center;
+
+}
+
+.menu-items{
+    order: 2;
+    display: flex;
+}
+.menu-items li {
+    list-style: none;
+    margin-left:1.5rem ;
+    font-size: 1.8rem;
+}
+.logo{
+    order: 1;
+    font-size: 2.5rem;
+    font-style:initial;
+    color: rgb(10, 187, 155);
+    transform: translateX(-150%);
+    animation: logo-animation 0.5s ease-in-out forwards;
+}
+@keyframes logo-animation{
+    100%{
+        transform: translate(0);
+    }
+}
+
+.navbar a{
+    color: #444;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover{
+    color: rgb(0, 251, 255);
+}
+/* #####################  SHOWCASE STYLE ########### */
+.showcase-area{
+    height: 50vh;
+    background:url("/IMG/home/header-image2.jpg");
+    background-size:  cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.showcase-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 1.6rem;
+}
+
+
+
+/* ############### ABOUT US ############ */
+#about{
+    padding: 50px 0px ;
+    background: #f5f5f7;
+}
+.about-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#about h2{
+    font-size: 3.2rem;
+    padding: 30px;
+    padding-left: 10px;
+}
+
+#about p{
+    font-size: 1.8rem;
+    color: #555;
+
+}
+
+#about .small{
+    font-size: 1.6rem;
+    color: #666;
+    font-weight: 600;
+}
+.about-img{
+    flex: 1 1 400px;
+    padding: 30px;
+    transform: translateX(150%);
+    animation: about-img-animation 1s ease-in-out forwards;
+}
+@keyframes about-img-animation{
+    100%{
+        transform: translate(0);
+    }
+}
+.about-text{
+    flex: 1 1 400px;
+    padding: 30px;
+    margin: auto;
+    transform: translateX(-150%);
+    animation: about-text-animation 1s ease-in-out forwards;
+}
+@keyframes about-text-animation{
+    100%{
+        transform: translate(0);
+    }
+}
+.about-img img{
+    display: block;
+    height: 400px;
+    max-width: 100%;
+    margin: auto;
+    object-position: right;
+}
+
+/* ##################### food category styling ############  */
+
+#food{
+    padding: 5rem 0 10 rem 0;
+}
+#food h2{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: #555;
+}
+.food-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.food-container img{
+    display: block;
+    width: 100%;
+    margin: auto;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-container{
+    margin: 0 1rem;
+    position: relative;
+}
+
+.img-content{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 2;
+    text-align: center;
+    transition: all 0.3s ease-in-out 0.1s;
+}
+
+.img-content h3{
+    color: #fff;
+    font-size: 3rem;
+}
+
+.img-content a{
+    font-size: 1.2rem;
+}
+
+.img-container::after{
+    content:"" ;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0,0,0,0.871 );
+    opacity: 0;
+    z-index: 1;
+    transform: scaleY(0);
+    transform-origin: 100% 100%;
+    transition: all 0.3s ease-in-out;    
+}
+.img-container:hover::after{
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.img-container:hover .img-content{
+    opacity: 1;
+    top: 40%;
+}
+
+/* ################## Food Menu styling ########## */
+.food-menu-heading{
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 400;
+    color: #666;
+    margin-top: 70px;
+
+}
+
+.food-menu-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 0px 30px 0px;
+}
+
+.food-menu-container img{
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+.food-menu-item{
+    display: flex;
+    flex: 1 1 600px;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+}
+
+.food-description{
+    margin: auto 1.5rem;
+}
+.food-title{
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #444;
+}
+.food-description p{
+    font-size: 1.4rem;
+    color: #555;
+    font-weight: 500;
+}
+.food-description .food-price{
+    color: #117964;
+    font-weight: 700;
+}
+
+/*#################### CONTACT US STYLING ###############*/
+
+#contact{
+    padding: 10rem 0;
+    background: rgb(226,226,226);
+}
+
+.contact-container{
+    display: flex;
+    background: #fff;
+}
+
+.contact-image{
+    width: 70%
+}
+
+.contact-image img{
+    display: block;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+
+}
+
+.form-container{
+    padding: 1rem;
+    width: 50%;
+    margin: auto;
+
+}
+
+.form-container input{
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 1rem 0;
+    box-shadow: none;
+    outline: none;
+    margin-bottom: 1rem;
+    color: #444;
+    font-weight: 500%;
+}
+
+.form-container textarea{
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 1rem 0;
+} 
+
+.form-container h2{
+    font-size: 3rem;
+    font-weight: 400;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.form-container a{
+    font-size: 1.2rem;
+}
+
+/* ################# footer style ############### */
+
+#footer h2{
+    text-align: center;
+    font-size: 2rem;
+    padding:3rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: rgb(65,65,65);
+}
+
+/* ################## media Queries ############# */
+@media (max-width: 768px){
+    .navbar{
+        opacity: 0.95;
+
+    }
+    .navbar-container input[type="checkbox"]
+    .navbar-container .hamburger-lines{
+        display: block;
+    }
+    .navbar-container{
+        display: block;
+        position: relative;
+        height: 64px;
+    }
+    .navbar-container input[type="checkbox"]{
+        position: absolute;
+        display: block;
+        height: 32px;
+        width: 40px;
+        top: 20px;
+        left: 20px;
+        z-index: 5;
+        opacity: 0;
+
+    }
+    .navbar-container .hamburger-lines{
+        display: block;
+        height: 35px;
+        width: 40px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .navbar-container .hamburger-lines .line{
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 10px;
+        background: #333333;
+    }
+
+    .navbar-container .hamburger-lines line1{
+        transform-origin: 0% 0%;
+        transition: transform 0.4s ease-in-out;
+    }
+    .navbar-container .hamburger-lines line2{
+        transition: transform 0.4s ease-in-out;
+        
+    }
+    .navbar-container .hamburger-lines line3{
+        transform-origin: 0% 100%;
+        transition: transform 0.4s ease-in-out;
+    }
+    .navbar .menu-items{
+        padding-top: 100px;
+        background:#fff;
+        height: 100vh;
+        max-width: 300px;
+        transform: translateX(-150%);
+        display: flex;
+        flex-direction: column;
+        margin-left: -40px;
+        padding-left: 50px;
+        transition: transform 0.5s ease-in-out;
+        box-shadow: 5px 0px 10px 0px #aaa;
+
+
+    }
+    .navbar .menu-items li{
+        margin-bottom: 3rem;
+        font-weight: 500;
+        font-size: 2rem;
+    }
+    .logo{
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 3rem;
+    }
+    .navbar-container input[type='checkbox']:checked ~ .menu-items{
+        transform: translateX(0);
+    }
+    .navbar-container input[type='checkbox']:checked ~ .hamburger-lines .line1{
+        transform:rotate(45deg);
+    }
+    .navbar-container input[type='checkbox']:checked ~ .hamburger-lines .line2{
+        transform: scaleY(0);
+    }
+    .navbar-container input[type='checkbox']:checked ~ .hamburger-lines .line3{
+        transform: rotate(-45deg);
+    }
+
+    /* ########### food container */
+
+    .food-container{
+        flex-direction: column;
+        align-items: stretch;
+
+    }
+    .food-type:not(:last-child){
+        margin-bottom: 3rem;
+    }
+    .food-type{
+        box-shadow: 5px 5px 10px 0px #aaa;
+    }
+    .img-container{
+        margin: 0;
+    }
+
+    /* ######### small screeen */
+@media(max-width: 500px){
+    html{
+        font-size: 50%;
+    }
+    .testimonal-container{
+        flex-direction: column;
+        text-align: center;
+    }
+    .food-menu-item{
+        flex-direction: column;
+        text-align: center;
+    }
+    .food-menu-container img{
+        margin:auto;
+    }
+    .form-container{
+        width: 90%;
+    }
+    .contact-container{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .contact-image{
+        width: 90%;
+        margin: 3rem auto;
+    }
+    }
+
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" >
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="#showcase">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#food">Category</a></li>
+                <!-- <li><a href="#food-menu">Menu</a></li> -->
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#my-order">My Order</a></li>
+                <li><a href="#my-logout">Logout</a></li>
+            </ul>
+            <h1 class="logo">The Secret Recipes</h1>
+        </div>
+    </nav>
+
+    <section class="showcase-area" id="showcase">
+        <div class="showcase-container">
+        <h1 class="main-title">Eat Right Food</h1>
+        <p>Eat healthy food , it is good for your health   </p>
+        <a href="#food-menu" class="btn btn-primary">Menu</a>
+        </div>
+        
+    </section>
+    <section id="about">
+        <div class="about-wrapper container">
+            <div class="about-text"> 
+                <p class="small">About Us</p>
+                <h2>There is no love sincerer than the love of food.</h2>
+                <p>Food is not about impressing people. It’s about making them feel comfortable.</p>
+            </div>
+            <div class="about-img">
+                <img src="IMG/home/p 1.jpg" alt="About Us">
+            </div>
+        </div>
+
+
+    </section>
+    <section id="food">
+        <h2>Types of Food</h2>
+        <div class="food-container container">
+            <div class="food-type pizza  ">
+                <div class="img-container">
+                    <img src="/IMG/home/PIZZA.jpg" alt="">
+                    <div class="img-content">
+                        <h3>Pizza</h3>
+                        <a href="https://en.wikipedia.org/wiki/Pizza" class="btn btn-primary" target="_blank">Lear More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="food-type burger">
+                <div class="img-container">
+                    <img src="/IMG/home/BURGER.jpg" alt="">
+                    <div class="img-content">
+                        <h3>Burger</h3>
+                        <a href="https://en.wikipedia.org/wiki/Hamburger" class="btn btn-primary" target="_blank">Lear More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="food-type sandwich">
+                <div class="img-container">
+                    <img src="/IMG/home/SANDWITCH 01.webp" alt="">
+                    <div class="img-content">
+                        <h3>Sandwich</h3>
+                        <a href="https://en.wikipedia.org/wiki/Sandwich" class="btn btn-primary" target="_blank">Lear More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="food-type Momo  ">
+                <div class="img-container">
+                    <img src="/IMG/home/MOMOS.jpg" alt="">
+                    <div class="img-content">
+                        <h3>Momos</h3>
+                        <a href="https://en.wikipedia.org/wiki/Momo_(food)" class="btn btn-primary" target="_blank">Lear More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="food-menu">
+        <h2 class="food-menu-heading">
+            Food Menu
+        </h2>
+        <div class="food-menu-container container">
+            <div class="food-menu-item">
+                <div class="food-image">
+                    <img src="/IMG/home/menu1.jpg" alt="">
+                </div>
+                <div class="food-description">
+                    <h2 class="food-title">Pizzeria</h2>
+                    <a href="/Menu"><button class="btn btn-primary">Menu </button></a>
+                    
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-image">
+                    <img src="/IMG/home/menu2.jpg" alt="">
+                </div>
+                <div class="food-description">
+                    <h2 class="food-title">MOMOS</h2>
+                    <a href="menu1.html"><button class="btn btn-primary">Menu</button></a>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-image">
+                    <img src="/IMG/home/menu3.jpg" alt="">
+                </div>
+                <div class="food-description">
+                    <h2 class="food-title">SANDWITCH</h2>
+                    <a href="menu1.html"><button class="btn btn-primary">Menu</button></a>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-image">
+                    <img src="/IMG/home/menu4.jpg" alt="">
+                </div>
+                <div class="food-description">
+                    <h2 class="food-title">BURGER </h2>
+                    <a href="menu1.html"><button class="btn btn-primary">Menu</button></a>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-image">
+                    <img src="/IMG/home/menu5.webp" alt="">
+                </div>
+                <div class="food-description">
+                    <h2 class="food-title">TIFFINS</h2>
+                    <a href="menu1.html"><button class="btn btn-primary">Menu</button></a>
+                </div>
+            </div>
+            <div class="food-menu-item">
+                <div class="food-image">
+                    <img src="/IMG/home/menu6.jpg" alt="">
+                </div>
+                <div class="food-description">
+                    <h2 class="food-title">SPECIAL THALI</h2>
+                    <a href="menu.html"><button class="btn btn-primary">Menu</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="contact-container container">
+            <div class="contact-image">
+                <img src="/IMG/home/restraunt-image.jpg" alt="">
+            </div>
+            <div class="form-container">
+                <h2>
+                    Contact Us
+                </h2>
+                <input type="text" name="" id="" placeholder="Name">
+                <input type="text" name="" id="" placeholder="E-Mail">
+                <textarea  name="" id="" cols="30" rows="10" placeholder="Type Your Message Here"></textarea>
+                <a href="#" class="btn btn-primary">Submit</a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <h2>Restraunt Website &copy; all right reserved.</h2>
+    </footer>
+
+
+
+    <!-- ########for smooth scrolling ########## -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+
+</body>
+</html>

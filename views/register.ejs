@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/Register.css">
+</head>
+<style>
+    html,body{
+    background: linear-gradient(115deg, #59e7bd, #1feef5);
+}
+
+.register-title{
+    
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    background: linear-gradient(115deg, #59e7bd, #1feef5);
+    
+}
+
+.register{
+    display: flex;
+    justify-content: center;
+    padding-top: 6rem;
+
+}
+
+.con{
+    width: 100%;
+    max-width: 20rem;
+
+}
+
+.container{
+    background-color:#fff;
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    border-radius: 0.25rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.con-1{
+    margin-bottom: 1rem;
+}
+
+.la{
+    display: block;
+    color: rgb(77, 75, 75);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.in{
+    --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    appearance:none;
+    border-width: 1px;
+    border-radius: 0.25rem;
+    width: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: rgb(77, 75, 75);
+    line-height: 1.25;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.con-2{
+    margin-bottom: 1.5rem;
+}
+
+.btn{
+        border-radius: 9999px;
+        color: #fff;
+        font-weight: 700;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-radius: 0.25rem;
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        background-color: #16a089;
+}
+
+.a{
+        display: inline-block;
+        vertical-align: baseline;
+        font-weight: 700;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+}
+
+
+.con-3{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+</style>
+<body>
+    <section class="register">
+        <div class="con">
+            <form action="/register" method="POST" class="container">
+                <h1 class="register-title">Registration</h1>
+                
+                <div class="con-1">
+                    <label class="la" for="fullname">
+                        Name
+                    </label>
+                    <input name="fullname" value=""
+                        class="in"
+                        id="fullname" type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="con-1">
+                    <label class="la" for="username">
+                        Email
+                    </label>
+                    <input name="email" value=""
+                        class="in"
+                        id="email" type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="con-1">
+                    <label class="la" for="username">
+                        Phone Number
+                    </label>
+                    <input name="phone" value=""
+                        class="in"
+                        id="phone" type="tel" placeholder="Enter your Phone no." maxlength="10" required>
+                </div>
+                <div class="con-2">
+                    <label class="la" for="password">
+                        Password
+                    </label>
+                    <input name="password"
+                        class="in"
+                        id="password" type="password" placeholder="******************" required>
+                </div>
+                <div class="con-2">
+                    <label class="la" for="password">
+                       Conform Password
+                    </label>
+                    <input name="passwordConf"
+                        class="in"
+                        id="passwordConf" type="password" placeholder="******************" required>
+                </div>
+                <div class="con-3">
+                    <button
+                        class="btn"
+                        type="submit">
+                        Register
+                    </button>
+                    <a class="a" href="/login">
+                        Already have account?
+                    </a>
+                </div>
+            </form>
+            
+        </div>
+    </section>
+</body>
+</html>
