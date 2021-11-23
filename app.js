@@ -149,6 +149,19 @@ app.post('/edit' , upload.single('image'), (req, res) => {
 app.get('/register', (req, res) => {
     res.render("register")
 });
+app.post("/register", (req, res) => {
+    var myData = new User(req.body);
+    myData.save()
+        .then(item => {
+           // res.send("item saved to database");
+           res.redirect('/login')
+        })
+        .catch(err => {
+            res.status(400).send("unable to save to database");
+           // res.redirect('/register')
+        });
+})
+
 
 // app.post('/register', (req, res, next) => {
 //     if (  !req.body.fullname || !req.body.email ||  !req.body.phone || !req.body.password || !req.body.passwordConf){
@@ -195,44 +208,44 @@ app.get('/register', (req, res) => {
 
 // });
 
-app.post("/register" , function (req, res) {
-    console.log(req.body)
+// app.post("/register" , function (req, res) {
+//     console.log(req.body)
     
-    if(req.body.password == req.body.passwordConf){
+//     if(req.body.password == req.body.passwordConf){
 
-        User.findOne({email: req.body.email}, function (err, data) {
-            if(!data) {
-                var myData = new User(req.body);
-                myData.save()
-                  .then(item => {
-                    // res.send("item saved to database");
-                    res.redirect('/login')
-                  })
-                  .catch(err => {
-                    res.status(400).send("unable to save to database");
-                    // res.redirect('/register')
-                  });
-                // var obj = {
-                //     fullname: req.body.fullname,
-                //     email: req.body.email,
-                //     phone: req.body.phone,
-                //     password: req.body.password,
-                //     passwordConf: req.body.passwordConf, 
-                // };
-                // User.create(obj, (err) => {
-                //     console.log(obj);
-                //     if(err) throw err;
-                //     res.redirect('/login')
-                // })
-            }else{
-                res.send({ "Success": "Email is already registered" });
-            }
-        })
+//         User.findOne({email: req.body.email}, function (err, data) {
+//             if(!data) {
+//                 var myData = new User(req.body);
+//                 myData.save()
+//                   .then(item => {
+//                     // res.send("item saved to database");
+//                     res.redirect('/login')
+//                   })
+//                   .catch(err => {
+//                     res.status(400).send("unable to save to database");
+//                     // res.redirect('/register')
+//                   });
+//                 // var obj = {
+//                 //     fullname: req.body.fullname,
+//                 //     email: req.body.email,
+//                 //     phone: req.body.phone,
+//                 //     password: req.body.password,
+//                 //     passwordConf: req.body.passwordConf, 
+//                 // };
+//                 // User.create(obj, (err) => {
+//                 //     console.log(obj);
+//                 //     if(err) throw err;
+//                 //     res.redirect('/login')
+//                 // })
+//             }else{
+//                 res.send({ "Success": "Email is already registered" });
+//             }
+//         })
         
-    }else{
-        res.send({ "Success": "password is not matched" });
-    }
-})
+//     }else{
+//         res.send({ "Success": "password is not matched" });
+//     }
+// })
 
 
 // TO SHOW LOGIN PAGE
