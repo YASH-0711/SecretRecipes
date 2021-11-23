@@ -50,8 +50,6 @@ app.get('/Menu', (req, res) => {
     });
 });
 
-
-
 // TO SHOW ADD MENU PAGE
 app.get('/addMenu', (req, res) => {
     res.render("addMenu")
@@ -156,50 +154,76 @@ app.get('/register', (req, res) => {
     res.render("register")
 });
 
-app.post('/register', (req, res, next) => {
-    if (  !req.body.fullname || !req.body.email ||  !req.body.phone || !req.body.password || !req.body.passwordConf){
-        req.flash('error_message' , "Please enter full details.")
+// app.post('/register', (req, res, next) => {
+//     if (  !req.body.fullname || !req.body.email ||  !req.body.phone || !req.body.password || !req.body.passwordConf){
+//         req.flash('error_message' , "Please enter full details.")
        
-    } else {
-        if (req.body.password == req.body.passwordConf){
+//     } else {
+//         if (req.body.password == req.body.passwordConf){
 
-            User.findOne({ email: req.body.email }, (err, data) =>{
+//             User.findOne({ email: req.body.email }, (err, data) =>{
 
-                if(!data){
-                    let c;
-                    User.findOne({}, (err, data) =>{
-                        var obj = {
-                            // unique_id: c,
-                            fullname: req.body.fullname,
-                            email: req.body.email,
-                            phone: req.body.phone,
-                            password: req.body.password,
-                            passwordConf: req.body.passwordCon,     
-                        };
-                        User.create(obj, (err, item) => {
-                            if (err) {
-                                console.log(err);
-                            }
-                            else {
-                                // item.save();
-                                 res.redirect('/login');
-                            }
-                        });
-                    })
+//                 if(!data){
+//                     let c;
+//                     User.findOne({}, (err, data) =>{
+//                         var obj = {
+//                             // unique_id: c,
+//                             fullname: req.body.fullname,
+//                             email: req.body.email,
+//                             phone: req.body.phone,
+//                             password: req.body.password,
+//                             passwordConf: req.body.passwordCon,     
+//                         };
+//                         User.create(obj, (err, item) => {
+//                             if (err) {
+//                                 console.log(err);
+//                             }
+//                             else {
+//                                 // item.save();
+//                                  res.redirect('/login');
+//                             }
+//                         });
+//                     })
                     
                     
-                } else{
-                    res.send({ "success": "Email is already registered" });
-                }
+//                 } else{
+//                     res.send({ "success": "Email is already registered" });
+//                 }
                 
-            });
+//             });
            
-        } else {
-            res.send({ "Success": "password is not matched" });
-        }
-    };
+//         } else {
+//             res.send({ "Success": "password is not matched" });
+//         }
+//     };
 
-});
+// });
+
+app.post("/register" , function (req, res) {
+    if(req.body.password == req.body.passwordConf){
+
+        User.findOne({email: req.body.email}, function (err, data) {
+            if(!data) {
+                var obj = {
+                    fullname: req.body.fullname,
+                    email: req.body.email,
+                    phone: req.body.phone,
+                    password: req.body.password,
+                    passwordConf: req.body.passwordCon, 
+                };
+                User.create(obj, (err) => {
+                    if(err) throw err;
+                    res.redirect('/login')
+                })
+            }else{
+                res.send({ "Success": "Email is already registered" });
+            }
+        })
+        
+    }else{
+        res.send({ "Success": "password is not matched" });
+    }
+})
 
 
 // TO SHOW LOGIN PAGE
