@@ -197,22 +197,33 @@ app.get('/register', (req, res) => {
 
 app.post("/register" , function (req, res) {
     console.log(req.body)
+    
     if(req.body.password == req.body.passwordConf){
 
         User.findOne({email: req.body.email}, function (err, data) {
             if(!data) {
-                var obj = {
-                    fullname: req.body.fullname,
-                    email: req.body.email,
-                    phone: req.body.phone,
-                    password: req.body.password,
-                    passwordConf: req.body.passwordConf, 
-                };
-                User.create(obj, (err) => {
-                    console.log(obj);
-                    if(err) throw err;
+                var myData = new User(req.body);
+                myData.save()
+                  .then(item => {
+                    // res.send("item saved to database");
                     res.redirect('/login')
-                })
+                  })
+                  .catch(err => {
+                    // res.status(400).send("unable to save to database");
+                    res.redirect('/register')
+                  });
+                // var obj = {
+                //     fullname: req.body.fullname,
+                //     email: req.body.email,
+                //     phone: req.body.phone,
+                //     password: req.body.password,
+                //     passwordConf: req.body.passwordConf, 
+                // };
+                // User.create(obj, (err) => {
+                //     console.log(obj);
+                //     if(err) throw err;
+                //     res.redirect('/login')
+                // })
             }else{
                 res.send({ "Success": "Email is already registered" });
             }
