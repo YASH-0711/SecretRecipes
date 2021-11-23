@@ -141,9 +141,11 @@
         </br>
         
             <label class="la" for="size" >Size</label>
-            <input type="radio" name="size" value="small" <% if(records.size =="small") { %> selected <% } %>>Small</input>
-            <input type="radio"  name="size" value="medium" <% if(records.size =="medium") { %> selected <% } %>>Medium</input>
-            <input type="radio"  name="size" value="large" <% if(records.size =="large") { %> selected <% } %>>Large</input>
+            <select>
+                <option value="small" <% if(records.size =="small") { %> selected <% } %>>Small</option>
+                <option value="medium" <% if(records.size =="medium") { %> selected <% } %>>Medium</option>
+                <option value="large" <% if(records.size =="large") { %> selected <% } %>>Large</option>
+            </select>
 
             
         

@@ -4,13 +4,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var fs = require('fs');
 var path = require('path');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
 require('dotenv/config');
 
 mongoose.connect(process.env.MONGO_URL,
     { useNewUrlParser: true, useUnifiedTopology: true }, err => {
-        console.log('connected')
+        console.log('DataBase Connected')
     });
 
     app.use(bodyParser.urlencoded({ extended: false }))
@@ -46,15 +46,10 @@ app.get("/", (req,res) => {
 // TO OPEN PIZZA MENU PAGE
 app.get('/Menu', (req, res) => {
     Admin.find( (err, items) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send('An error occurred', err);
-        }
-        else {
-            res.render('P_menu', { items: items });
-        }
+        res.render('P_menu' , {items:items})
     });
 });
+
 
 
 // TO SHOW ADD MENU PAGE
@@ -76,8 +71,6 @@ app.post('/addMenu', upload.single('image'), (req, res, next) => {
     Admin.create(obj, (err, item) => {
         console.log(obj)
         // console.log(item)
-
-
         if (err) {
             console.log(err);
         }
@@ -95,7 +88,6 @@ app.post('/addMenu', upload.single('image'), (req, res, next) => {
 
 app.get('/DataTable' , (req, res)=> {
 	Admin.find(function(err,data){
-		if(err) throw err;
 		res.render('dataTable' , {title : 'User Information', records:data});
 
 	})
@@ -125,8 +117,6 @@ app.get('/edit/:id' , (req, res) => {
     });
 });
 
-
-
 app.post('/edit' , upload.single('image'), (req, res) => {
     if(req.file){
         var dataRecords ={
@@ -149,9 +139,8 @@ app.post('/edit' , upload.single('image'), (req, res) => {
             size: req.body.size,    
     }
     };
-
-
     console.log(req.body.food_id)
+
     var update = Admin.findByIdAndUpdate(req.body.food_id, dataRecords);
 
     update.exec(function(err) {
@@ -193,7 +182,7 @@ app.post('/register', (req, res, next) => {
                             }
                             else {
                                 // item.save();
-                                 res.redirect('/');
+                                 res.redirect('/login');
                             }
                         });
                     })
@@ -226,7 +215,7 @@ app.post('/login', (req, res, next) => {
             if (data.password == req.body.password) {
                 res.redirect("/")
             } else {
-                res.send({ "Success": "Wrong password!" });
+                res.send({ "Success": "Email or Password is wrong" });
             }
         } else {
             res.send({ "Success": "This Email Is not regestered!" });
