@@ -55,7 +55,7 @@ app.get('/addMenu', (req, res) => {
     res.render("addMenu")
 });
   
-app.post('/addMenu', upload.single('image'), (req, res, next) => {
+app.post('/addMenu', (req, res) => {
   
     var obj = {
         name: req.body.name,
@@ -66,17 +66,11 @@ app.post('/addMenu', upload.single('image'), (req, res, next) => {
         //     contentType: 'image/png'
         // }
     }
-    Admin.create(obj, (err, item) => {
+    Admin.create(obj, (err) => {
         console.log(obj)
         // console.log(item)
-        if (err) {
-            console.log(err);
-        }
-        else {
-            item.save();
-            
-            res.redirect('/Menu');
-        }
+        if(err) throw err;
+        res.redirect('/Menu')
     });
 });
 
@@ -209,9 +203,10 @@ app.post("/register" , function (req, res) {
                     email: req.body.email,
                     phone: req.body.phone,
                     password: req.body.password,
-                    passwordConf: req.body.passwordCon, 
+                    passwordConf: req.body.passwordConf, 
                 };
                 User.create(obj, (err) => {
+                    console.log(obj);
                     if(err) throw err;
                     res.redirect('/login')
                 })
