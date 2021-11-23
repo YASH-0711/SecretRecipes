@@ -209,8 +209,8 @@ app.post("/register" , function (req, res) {
                     res.redirect('/login')
                   })
                   .catch(err => {
-                    // res.status(400).send("unable to save to database");
-                    res.redirect('/register')
+                    res.status(400).send("unable to save to database");
+                    // res.redirect('/register')
                   });
                 // var obj = {
                 //     fullname: req.body.fullname,
