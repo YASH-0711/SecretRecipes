@@ -52,10 +52,12 @@ app.get('/Menu', (req, res) => {
 
 // TO SHOW ADD MENU PAGE
 app.get('/addMenu', (req, res) => {
+    
     res.render("addMenu")
 });
   
 app.post('/addMenu', (req, res) => {
+    console.log(req.body)
   
     var obj = {
         name: req.body.name,
@@ -194,6 +196,7 @@ app.get('/register', (req, res) => {
 // });
 
 app.post("/register" , function (req, res) {
+    console.log(req.body)
     if(req.body.password == req.body.passwordConf){
 
         User.findOne({email: req.body.email}, function (err, data) {
