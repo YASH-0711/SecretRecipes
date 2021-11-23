@@ -63,10 +63,10 @@ app.post('/addMenu', upload.single('image'), (req, res, next) => {
         name: req.body.name,
         price: req.body.price,
         size: req.body.size,
-        img: {
-            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-            contentType: 'image/png'
-        }
+        // img: {
+        //     data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+        //     contentType: 'image/png'
+        // }
     }
     Admin.create(obj, (err, item) => {
         console.log(obj)
